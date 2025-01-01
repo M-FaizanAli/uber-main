@@ -12,8 +12,7 @@ router.post('/register', [body('email').isEmail().withMessage('invalid email'),
 router.post('/login', [
     body('email').isEmail().withMessage('invalid email'),
     body('password').isLength({min: 6}).withMessage('password must be at least 6 characters')
-], userController.loginUser
-);
+], userController.loginUser);
 
 router.get('/profile', authMiddleware.authUser, userController.getUserProfile);
 

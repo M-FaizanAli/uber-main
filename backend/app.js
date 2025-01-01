@@ -2,7 +2,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 const express  = require('express');
 const cors = require('cors');
-const userRoutes = require('./routes/user.routes')
+const userRoutes = require('./routes/user.routes');
+const captainRoutes = require('./routes/captain.routes');
+
 const app = express();
 const connectToDb = require('./db/db'); 
 const cookieParser = require('cookie-parser');
@@ -20,11 +22,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/users', userRoutes);
-app.get('/login', (req, res) => {
-    res.send('Hello Login!');
-});
 
-app.use('/', userRoutes);
+app.use('/captain', captainRoutes);
 
 
 module.exports = app;
