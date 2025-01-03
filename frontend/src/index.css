@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.opasity::before{
+    content: "";
+    background-color: green;
+    position:'absolute';
+    height: 40px;
+  
+  }
