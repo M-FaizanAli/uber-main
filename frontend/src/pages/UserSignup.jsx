@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserSignup = () => {
   const [email, setEmail] = useState("");
@@ -8,7 +8,9 @@ const UserSignup = () => {
   const [lastName, setLastName] = useState("");
   const [UserData, setUserData] = useState({});
 
-  const submitHandler = (e) => {
+  const navigate = useNavigate();
+
+  const submitHandler = async (e) => {
     e.preventDefault();
     setUserData({
       email: email,
@@ -18,11 +20,13 @@ const UserSignup = () => {
         lastname: lastName,
       },
     });
-    console.log(UserData);
+
     setEmail("");
     setPassword("");
     setFirstName("");
     setLastName("");
+
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, UserData);
   };
   return (
     <div className="p-7 h-screen flex flex-col justify-between">

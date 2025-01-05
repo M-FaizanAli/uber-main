@@ -18,7 +18,6 @@ const CaptainSignup = () => {
         lastname: lastName,
       },
     });
-    console.log(UserData);
     setEmail("");
     setPassword("");
     setFirstName("");
