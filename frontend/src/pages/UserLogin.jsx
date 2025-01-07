@@ -22,13 +22,18 @@ const UserLogin = () => {
         setEmail('');
         setPassword('');
 
-        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData);
-
-        if(response.status === 200){
-          const data = response.data;
-          setUser(data.user);
-          localStorage.setItem('token', data.token);
-          navigate('/home');
+        try {
+          const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData);
+        
+          if (response.status === 200) {
+            const data = response.data;
+            setUser(data.user);
+            localStorage.setItem('token', data.token);
+            navigate('/home');
+          }
+        } catch (error) {
+          console.error('Login failed:', error);
+          // Optionally, you can set an error state to display a message to the user
         }
     }
 

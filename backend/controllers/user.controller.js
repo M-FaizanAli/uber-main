@@ -56,10 +56,19 @@ module.exports.getUserProfile = async (req, res, next)=>{
   res.status(200).json(req.user);
 }
 
-module.exports.logoutUser = async (req, res, next)=>{
-  res.clearCookie("token");
-  const token = req.cookies.token || req.headers.authorization.split('')[1];
-  await blackListTokenModel.create({ token });
+module.exports.logoutUser = async (req, res, next) => {
+  try {
+    res.clearCookie("token");
+    const token = req.cookies.token || req.headers.authorization.split(' ')[1];
+    
+    if (!token) {
+      return res.status(400).json({ message: 'Token not found' });
+    }
 
-  res.status(200).json({ message: 'Logged out successfully' });
-}
+    await blackListTokenModel.create({ token });
+
+    res.status(200).json({ message: 'Logged out successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
