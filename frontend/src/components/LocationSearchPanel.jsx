@@ -19,3 +19,5 @@ const LocationSearchPanel = () => {
 };
 
 export default LocationSearchPanel;
+
+

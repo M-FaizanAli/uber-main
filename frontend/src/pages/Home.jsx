@@ -39,7 +39,7 @@ const Home = () => {
   },[panelOpen, panelCloseRef])
 
   return (
-    <div className="h-screen relative">
+    <div className="h-screen relative overflow-hidden">
       <img className="w-16 absolute left-5 top-5" src={logo} alt="Uber logo" />
       <div className="w-screen h-screen">
         <img className="h-full w-full " src={map} alt="" />
