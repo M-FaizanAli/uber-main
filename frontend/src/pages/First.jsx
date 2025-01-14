@@ -5,6 +5,9 @@ import logo from '../assets/logo.png'
  
 const First = () => {
 
+
+  
+
   return (
     <div className='bg-[url(https://img.freepik.com/free-photo/side-view-hands-holding-smartphone_23-2149764150.jpg?semt=ais_hybrid)] h-screen pt-8 flex justify-between flex-col w-full'>
        <img className='w-20 ml-8 object-contain' src={logo} alt="Uber Logo" />

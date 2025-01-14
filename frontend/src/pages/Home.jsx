@@ -32,6 +32,9 @@ const Home = () => {
         padding:0,
         height: '0%'
       })
+
+
+      
       gsap.to(panelCloseRef.current,{
         opacity: 0
       })
